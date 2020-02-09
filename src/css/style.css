@@ -1,0 +1,23 @@
+body {
+  background: #eee;
+  text-align: center;
+  width: 600px;
+  margin: 0 auto;
+}
+.invisible {
+  display: none;
+}
+.tasklist {
+  margin-left: 30%;
+}
+.tasklist h2 {
+  text-align: left;
+}
+.taskname {
+  width: 180px;
+  text-align: left;
+}
+
+.tasktype {
+  width: 100px;
+}
