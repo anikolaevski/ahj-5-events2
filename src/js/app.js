@@ -80,6 +80,7 @@ document.getElementById('enterform').addEventListener('keydown', (event) => {
     const text = event.target.value;
     if (text) {
       taskList.add(new Task(text));
+      TaskFilter = '';
       RenderSections();
       // eslint-disable-next-line no-param-reassign
       event.target.value = '';
