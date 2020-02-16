@@ -27,7 +27,7 @@ function RenderSection(params) {
   const sectBody = AutoAddChild(sectTab, 'tbody');
   let k = 0;
   taskList.toArray().forEach((el) => {
-    if (pinnedMode === el.pinned && (TaskFilter === '' || el.name.search(TaskFilter) !== -1)) {
+    if (pinnedMode === el.pinned && (TaskFilter === '' || el.pinned || el.name.search(TaskFilter) !== -1)) {
       const task = AutoAddChild(sectBody, 'tr');
       const taskTD = AutoAddChild(task, 'td');
       taskTD.classList.add('taskname');
@@ -36,12 +36,15 @@ function RenderSection(params) {
       taskTD2.classList.add('tasktype');
       taskTD2.innerHTML = `<input id="${el.name}_control" type = "checkbox">`;
       const checkbox = document.getElementById(`${el.name}_control`);
+      if (pinnedMode) {
+        checkbox.checked = true;
+        el.pin();
+      }
       checkbox.addEventListener('change', () => {
         el.switch();
         // eslint-disable-next-line no-use-before-define
         RenderSections();
       });
-
       k++;
     }
   });
